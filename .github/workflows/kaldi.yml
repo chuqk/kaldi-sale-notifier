@@ -2,10 +2,11 @@
 name: kaldi-sale-checker
 
 on:
+  push:                     # ←これを足す
+    branches: [ main ]      #   好きなブランチ
   schedule:
-    # 日本時間 09:00（UTC 0:00）に 1 日 1 回
     - cron: "0 0 * * *"
-  workflow_dispatch:       # ←手動実行は残す
+  workflow_dispatch:
 
 jobs:
   run:
