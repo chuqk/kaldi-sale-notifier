@@ -38,10 +38,13 @@ def fetch_target_articles():
         if not store_tag:
             continue  # 見出し行などをスキップ
         store = store_tag.text.strip()
+        print("DEBUG STORE:", store)
 
         # フィルタ: 自分のリストに無ければ continue
         if store not in MY_STORES:
             continue
+
+        print("DEBUG HIT :", store)
 
         # セール種別（タイトル）
         title_tag = row.select_one("span.saletitle, span.saletitle_f, span.salettile")
