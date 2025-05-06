@@ -20,6 +20,7 @@ DB_FILE = "seen.db"
 def fetch_target_articles():
     html = requests.get(TARGET_URL, timeout=10).text
     soup = BeautifulSoup(html, "html.parser")
+    print("DEBUG li.store count:", len(soup.select("li.store")))
     for li in soup.select("li.store"):
         store = li.select_one(".ttl").text.strip()
         print("DEBUG store_candidate:", store)            
