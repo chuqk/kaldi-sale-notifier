@@ -14,7 +14,7 @@ BASE_URL = "https://map.kaldi.co.jp/kaldi/articleList"
 DB_FILE  = "seen.db"
 
 # ───────── 生活圏ワードを自由に ──────────
-KEYWORDS = ["大井町", "荏原町", "戸越", "札幌"]
+KEYWORDS = ["大井町", "荏原町", "戸越", "各務"]
 # ──────────────────────────────
 
 HEADLINE = "☕️ KALDIの新着セール情報が届いたよ！\n"
