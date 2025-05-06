@@ -22,7 +22,7 @@ def fetch_target_articles():
     soup = BeautifulSoup(html, "html.parser")
     for li in soup.select("li.store"):
         store = li.select_one(".ttl").text.strip()
-        print("DEBUG store:", store)            
+        print("DEBUG store_candidate:", store)            
         if store not in MY_STORES:
             continue
         title = li.select_one(".sales_type").text.strip()
