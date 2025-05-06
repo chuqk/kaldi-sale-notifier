@@ -22,6 +22,7 @@ def fetch_target_articles():
     soup = BeautifulSoup(html, "html.parser")
     for li in soup.select("li.store"):
         store = li.select_one(".ttl").text.strip()
+        print("DEBUG store:", store)            
         if store not in MY_STORES:
             continue
         title = li.select_one(".sales_type").text.strip()
@@ -58,4 +59,5 @@ def push_line(msgs):
 
 if __name__ == "__main__":
     fresh = diff_since_last_run(fetch_target_articles())
+    print("DEBUG fresh_count:", len(fresh))
     push_line(fresh)
