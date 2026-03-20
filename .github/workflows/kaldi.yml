@@ -2,8 +2,6 @@
 name: kaldi-sale-checker
 
 on:
-  push:                     # ←これを足す
-    branches: [ main ]      #   好きなブランチ
   schedule:
     - cron: "0 0 * * *"
   workflow_dispatch:
@@ -42,6 +40,7 @@ jobs:
         env:
           LINE_TOKEN:   ${{ secrets.LINE_TOKEN }}
           LINE_USER_ID: ${{ secrets.LINE_USER_ID }}
+          KEYWORDS:     ${{ secrets.KEYWORDS }}
         run: |
           python scraper.py
 

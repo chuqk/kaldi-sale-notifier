@@ -8,14 +8,18 @@ KALDI セール一覧をクロールして
 """
 
 import os, sqlite3, urllib.parse, requests, datetime, textwrap
+from pathlib import Path
 from bs4 import BeautifulSoup
+from dotenv import load_dotenv
+
+load_dotenv(Path(__file__).resolve().parent / ".env")
 
 BASE_URL = "https://map.kaldi.co.jp/kaldi/articleList"
-DB_FILE  = "seen.db"
+DB_FILE  = str(Path(__file__).resolve().parent / "seen.db")
 
-# ───────── 店舗名部分一致（品川区内の例） ──────────
-KEYWORDS = ["目黒", "大井町", "荏原町", "戸越銀座", "五反田", "武蔵小山"]
-# ──────────────────────────────────────────────
+KEYWORDS = [k.strip() for k in os.environ.get("KEYWORDS", "").split(",") if k.strip()]
+if not KEYWORDS:
+    raise SystemExit("KEYWORDS が設定されていません。.env に KEYWORDS=目黒,大井町,... を設定してください。")
 
 HEADLINE = "☕️ KALDIの新着セール情報が届いたよ！\n\n"
 
