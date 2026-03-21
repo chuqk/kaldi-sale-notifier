@@ -14,7 +14,9 @@ pip install -r requirements.txt
 
 1. [LINE Developers](https://developers.line.biz/) でMessaging APIチャネルを作成
 2. チャネルアクセストークン（長期）を発行
-3. 通知先のユーザーIDを確認（チャネル基本設定の「あなたのユーザーID」）
+3. 通知先のIDを確認:
+   - **個人宛**: チャネル基本設定の「あなたのユーザーID」（`U` で始まる文字列）
+   - **グループ宛**: Bot をグループに招待し、Webhook イベントの `source.groupId`（`C` で始まる文字列）
 
 ### 3. 設定
 
@@ -28,7 +30,7 @@ cp .env.example .env
 
 ```
 LINE_TOKEN=your_channel_access_token
-LINE_USER_ID=your_user_id
+LINE_USER_ID=your_user_or_group_id
 KEYWORDS=目黒,大井町,五反田
 ```
 
